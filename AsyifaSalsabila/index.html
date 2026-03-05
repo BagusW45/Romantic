@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Her Gallery</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <h2 class="logo">Her</h2>
+
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Her</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#memories">Memories</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1>
+            Hi, This is
+            <span class="name">Asyifa</span>
+            <span class="blink">!</span>
+          </h1>
+
+          <h2 class="typing"></h2>
+
+          <p>
+            Every smile of her makes my world brighter. This page is dedicated
+            to the most beautiful person in my life.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#gallery" class="btn-primary">See Her Photos</a>
+
+            <a href="#memories" class="btn-outline">Our Memories</a>
+          </div>
+        </div>
+
+        <video class="hero-video" autoplay muted loop playsinline>
+<source src="images/her.mp4" type="video/mp4">
+</video>
+      </div>
+
+      <div class="scroll-down">⌄</div>
+    </section>
+
+    <section id="about" class="about scroll">
+      <div class="about-card">
+        <div class="about-left">
+          <img src="images/profil.jpeg" alt="Her Photo" />
+        </div>
+
+        <div class="about-right">
+          <h2>About Her</h2>
+
+          <p>
+            She is the reason why every day feels brighter. Her smile can change
+            my entire mood and her presence makes life more meaningful.
+          </p>
+
+          <p>
+            This page is dedicated to the person who makes my world more
+            beautiful every single day.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat">
+              <h3>∞</h3>
+              <span>Memories</span>
+            </div>
+
+            <div class="stat">
+              <h3>24/7</h3>
+              <span>On My Mind</span>
+            </div>
+
+            <div class="stat">
+              <h3>100%</h3>
+              <span>Special</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery scroll">
+      <h2>Her Beautiful Moments</h2>
+
+      <div class="gallery-grid">
+        <img src="images/photo1.jpeg" onclick="openModal(this)" />
+        <img src="images/photo2.jpeg" onclick="openModal(this)" />
+        <img src="images/photo3.jpeg" onclick="openModal(this)" />
+        <img src="images/photo4.jpeg" onclick="openModal(this)" />
+        <img src="images/photo5.jpeg" onclick="openModal(this)" />
+        <img src="images/photo7.jpeg" onclick="openModal(this)" />
+        <img src="images/photo8.jpeg" onclick="openModal(this)" />
+        <img src="images/photo9.jpeg" onclick="openModal(this)" />
+        <img src="images/photo10.jpeg" onclick="openModal(this)" />
+        <img src="images/photo11.jpeg" onclick="openModal(this)" />
+        <img src="images/photo12.jpeg" onclick="openModal(this)" />
+        <img src="images/photo13.jpeg" onclick="openModal(this)" />
+        <img src="images/photo14.jpeg" onclick="openModal(this)" />
+        <img src="images/photo15.jpeg" onclick="openModal(this)" />
+        <img src="images/photo16.jpeg" onclick="openModal(this)" />
+        <img src="images/photo17.jpeg" onclick="openModal(this)" />
+      </div>
+    </section>
+
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">×</span>
+
+      <img class="modal-content" id="modalImg" />
+    </div>
+
+    <section id="memories" class="memories scroll">
+      <h2>Our Memories</h2>
+
+      <div class="memory-container">
+        <div class="memory-card">
+          <h3>First Message</h3>
+
+          <p>
+            The first message we sent to each other seemed ordinary, but somehow
+            it became the start of something special.
+          </p>
+        </div>
+
+        <div class="memory-card">
+          <h3>Late Night Talks</h3>
+
+          <p>Countless nights talking for hours and forgetting about time.</p>
+        </div>
+
+        <div class="memory-card">
+          <h3>Virtual Moments</h3>
+
+          <p>
+            Even though we are far apart, every moment together means
+            everything.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="love-message scroll">
+      <div class="message-card">
+        <h2>A Message For You</h2>
+
+        <p>
+          Thank you for being part of my life. Every moment with you makes my
+          world brighter.
+        </p>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <p>Made with love</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
