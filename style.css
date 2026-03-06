@@ -162,28 +162,15 @@ section {
 }
 
 .gallery-grid {
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  gap: 25px;
-
-  margin-top: 40px;
+  column-count: 3;
+  column-gap: 20px;
 }
 
 .gallery-grid img {
   width: 100%;
-  height: 280px;
-
-  object-fit: cover;
+  margin-bottom: 20px;
 
   border-radius: 12px;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-grid img:hover {
@@ -230,33 +217,214 @@ section {
   cursor: pointer;
 }
 
-/* MEMORIES */
+/* ========================= */
+/* ROMANTIC SCENE */
+/* ========================= */
 
-.memories {
-  padding: 100px 10%;
-  text-align: center;
-}
+.romantic-scene {
+  position: relative;
 
-.memory-container {
+  height: 500px;
+
   display: flex;
 
-  flex-wrap: wrap;
+  flex-direction: column;
+
+  align-items: center;
 
   justify-content: center;
+
+  background: linear-gradient(#1e1e2f, #2a2a40);
+
+  color: white;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  margin: 100px 10%;
+}
+
+/* moon */
+
+.moon {
+  width: 80px;
+  height: 80px;
+
+  background: #fff;
+
+  border-radius: 50%;
+
+  position: absolute;
+
+  top: 40px;
+  right: 100px;
+
+  box-shadow: 0 0 40px #fff;
+}
+
+/* stars */
+
+.stars span {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  animation: blink 2s infinite;
+}
+
+.stars span:nth-child(1) {
+  top: 60px;
+  left: 100px;
+}
+.stars span:nth-child(2) {
+  top: 120px;
+  left: 300px;
+}
+.stars span:nth-child(3) {
+  top: 90px;
+  right: 200px;
+}
+.stars span:nth-child(4) {
+  top: 150px;
+  right: 120px;
+}
+.stars span:nth-child(5) {
+  top: 70px;
+  left: 500px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* couple */
+
+.couple {
+  display: flex;
 
   gap: 20px;
 
   margin-top: 40px;
 }
 
-.memory-card {
-  background: #ffe6eb;
+/* simple characters */
 
-  padding: 30px;
+.boy,
+.girl {
+  width: 60px;
+  height: 120px;
 
-  border-radius: 12px;
+  background: #ff6b9a;
 
-  width: 250px;
+  border-radius: 30px;
+
+  position: relative;
+}
+
+.boy {
+  background: #4f46e5;
+}
+
+/* love text */
+
+.love-text {
+  text-align: center;
+
+  margin-top: 30px;
+}
+
+.love-text h2 {
+  font-size: 2rem;
+
+  margin-bottom: 10px;
+}
+
+/* hearts animation */
+
+.hearts span {
+  position: absolute;
+
+  bottom: 0;
+
+  width: 12px;
+  height: 12px;
+
+  background: #ff6b9a;
+
+  transform: rotate(45deg);
+
+  animation: floatHeart 6s infinite;
+}
+
+.hearts span::before,
+.hearts span::after {
+  content: "";
+
+  position: absolute;
+
+  width: 12px;
+  height: 12px;
+
+  background: #ff6b9a;
+
+  border-radius: 50%;
+}
+
+.hearts span::before {
+  top: -6px;
+  left: 0;
+}
+
+.hearts span::after {
+  left: -6px;
+  top: 0;
+}
+
+.hearts span:nth-child(1) {
+  left: 20%;
+  animation-delay: 0s;
+}
+.hearts span:nth-child(2) {
+  left: 35%;
+  animation-delay: 2s;
+}
+.hearts span:nth-child(3) {
+  left: 50%;
+  animation-delay: 4s;
+}
+.hearts span:nth-child(4) {
+  left: 65%;
+  animation-delay: 1s;
+}
+.hearts span:nth-child(5) {
+  left: 80%;
+  animation-delay: 3s;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-400px) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 /* LOVE MESSAGE */
@@ -550,4 +718,230 @@ footer {
   border-radius: 50%;
   border: 6px solid white;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE FIX */
+/* ========================= */
+
+@media (max-width: 768px) {
+  /* NAVBAR */
+
+  .nav-container {
+    padding: 15px 5%;
+  }
+
+  .nav-menu {
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  /* HERO */
+
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-image img,
+  .hero-video {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* ABOUT */
+
+  .about {
+    padding: 80px 5%;
+  }
+
+  .about-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .about-left img {
+    width: 200px;
+  }
+
+  .about-right {
+    max-width: 100%;
+  }
+
+  .about-stats {
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* GALLERY */
+
+  .gallery {
+    padding: 80px 5%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .gallery-grid img {
+    height: 180px;
+  }
+
+  @media (max-width: 768px) {
+    .romantic-scene {
+      height: 420px;
+
+      margin: 80px 5%;
+    }
+
+    .moon {
+      right: 40px;
+    }
+
+    .love-text h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* LOVE MESSAGE */
+
+  .love-message {
+    padding: 60px 5%;
+  }
+
+  .message-card {
+    padding: 25px;
+  }
+}
+
+/* ========================= */
+/* MOBILE NAVBAR */
+/* ========================= */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  transition: 0.3s;
+}
+
+/* animasi hamburger */
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+
+    top: 60px;
+    right: 0;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    opacity: 0;
+
+    transform: translateY(-10px) scale(0.9);
+
+    pointer-events: none;
+
+    transition: 0.3s ease;
+  }
+
+  /* menu aktif */
+
+  .nav-menu.active {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+
+    pointer-events: auto;
+  }
+
+  /* bubble */
+
+  .nav-menu li {
+    background: white;
+
+    padding: 8px 16px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    animation: bubbleDrop 0.35s ease forwards;
+  }
+
+  .nav-menu a {
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 14px;
+  }
+
+  @keyframes bubbleDrop {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

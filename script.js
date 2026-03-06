@@ -18,23 +18,7 @@ function closeModal() {
   document.getElementById("imageModal").style.display = "none";
 }
 
-// typing animation
 
-const text = "Asyifa";
-
-let i = 0;
-
-function typing() {
-  if (i < text.length) {
-    document.querySelector(".typing").textContent += text.charAt(i);
-
-    i++;
-
-    setTimeout(typing, 120);
-  }
-}
-
-typing();
 
 // scroll animation
 
@@ -126,3 +110,36 @@ function typeEffect() {
 }
 
 typeEffect();
+
+
+// hamburger bubble menu
+
+const hamburger = document.querySelector(".hamburger")
+const navMenu = document.querySelector(".nav-menu")
+
+hamburger.addEventListener("click", () => {
+
+hamburger.classList.toggle("active")
+navMenu.classList.toggle("active")
+
+})
+
+document.querySelectorAll(".nav-link").forEach(link => {
+
+link.addEventListener("click", () => {
+
+hamburger.classList.remove("active")
+navMenu.classList.remove("active")
+
+})
+
+})
+// close modal when clicking outside image
+
+const modal = document.getElementById("imageModal");
+
+modal.addEventListener("click", function (e) {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
