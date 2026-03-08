@@ -17,8 +17,13 @@ app.use(express.json());
 
 // Folder upload
 const uploadDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (e) {
+  // Vercel: filesystem read-only, upload tidak persistent
+  console.warn('Folder uploads tidak bisa dibuat (mode serverless):', e.message);
 }
 
 // Sajikan /images → folder images/ (video, musik, foto profil)
@@ -125,7 +130,12 @@ app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Server berjalan di http://localhost:${PORT}`);
-  console.log(`🔑 Admin panel: http://localhost:${PORT}/admin.html`);
-});
+// Jalankan server hanya saat lokal (bukan di Vercel)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`✅ Server berjalan di http://localhost:${PORT}`);
+    console.log(`🔑 Admin panel: http://localhost:${PORT}/admin.html`);
+  });
+}
+
+module.exports = app;
