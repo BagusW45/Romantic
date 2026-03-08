@@ -71,18 +71,28 @@ const upload = multer({
 
 // ─── API ENDPOINTS ───────────────────────────────────────────────────────────
 
-// GET /api/photos — ambil semua foto
+// GET /api/photos — ambil semua foto (dari images/ + uploads/)
 app.get('/api/photos', (req, res) => {
-  fs.readdir(uploadDir, (err, files) => {
-    if (err) return res.status(500).json({ error: 'Gagal membaca folder foto' });
+  const imageStaticDir = path.join(__dirname, 'images');
+  const imageRegex = /\.(jpeg|jpg|png|gif|webp)$/i;
+  // File yang dikecualikan dari images/ (bukan foto galeri)
+  const excluded = ['profil.jpeg', 'profil.jpg'];
 
-    const imageFiles = files.filter(f => /\.(jpeg|jpg|png|gif|webp)$/i.test(f));
-    const photos = imageFiles.map(f => ({
-      filename: f,
-      url: `/uploads/${f}`
-    }));
+  const readDir = (dir, prefix) => new Promise((resolve) => {
+    fs.readdir(dir, (err, files) => {
+      if (err) return resolve([]);
+      const imgs = (files || [])
+        .filter(f => imageRegex.test(f) && !excluded.includes(f))
+        .map(f => ({ filename: f, url: `${prefix}/${f}` }));
+      resolve(imgs);
+    });
+  });
 
-    res.json(photos);
+  Promise.all([
+    readDir(imageStaticDir, '/images'),
+    readDir(uploadDir, '/uploads')
+  ]).then(([staticPhotos, uploadedPhotos]) => {
+    res.json([...staticPhotos, ...uploadedPhotos]);
   });
 });
 
