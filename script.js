@@ -1,3 +1,54 @@
+// background music — play saat user klik tombol Enter
+
+const bgMusic = document.getElementById("bgMusic");
+
+function enterSite() {
+  // Play musik langsung dalam gesture ini (sah oleh browser)
+  bgMusic.play().catch((err) => {
+    console.warn("Music play failed:", err);
+  });
+
+  // Fade out & sembunyikan overlay
+  const overlay = document.getElementById("introOverlay");
+  overlay.classList.add("overlay-hide");
+  setTimeout(() => { overlay.style.display = "none"; }, 800);
+}
+
+// lyrics diimport dari lyrics.js
+
+
+const lyricEl = document.getElementById("currentLyric");
+let lastIndex = -1;
+
+bgMusic.addEventListener("timeupdate", () => {
+  const t = bgMusic.currentTime;
+
+  // Cari baris lirik yang aktif saat ini
+  let activeIndex = -1;
+  for (let i = lyrics.length - 1; i >= 0; i--) {
+    if (t >= lyrics[i].time) {
+      activeIndex = i;
+      break;
+    }
+  }
+
+  if (activeIndex === lastIndex) return;
+  lastIndex = activeIndex;
+
+  const text = activeIndex >= 0 ? lyrics[activeIndex].text : "";
+
+  // Fade out → ganti teks → fade in
+  lyricEl.classList.remove("lyric-visible");
+  lyricEl.classList.add("lyric-hidden");
+
+  setTimeout(() => {
+    lyricEl.textContent = text;
+    lyricEl.classList.remove("lyric-hidden");
+    lyricEl.classList.add("lyric-visible");
+  }, 350);
+});
+
+
 function scrollToGallery() {
   document.querySelector("#gallery").scrollIntoView({
     behavior: "smooth",
@@ -6,17 +57,36 @@ function scrollToGallery() {
 
 // modal
 
+const galleryImgs = Array.from(document.querySelectorAll(".gallery-grid img"));
+let currentImgIndex = 0;
+
 function openModal(img) {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImg");
 
-  modal.style.display = "block";
+  currentImgIndex = galleryImgs.indexOf(img);
+  modal.style.display = "flex";
   modalImg.src = img.src;
+}
+
+function changeModal(direction) {
+  currentImgIndex = (currentImgIndex + direction + galleryImgs.length) % galleryImgs.length;
+  document.getElementById("modalImg").src = galleryImgs[currentImgIndex].src;
 }
 
 function closeModal() {
   document.getElementById("imageModal").style.display = "none";
 }
+
+// keyboard navigation
+document.addEventListener("keydown", (e) => {
+  const modal = document.getElementById("imageModal");
+  if (modal.style.display !== "none" && modal.style.display !== "") {
+    if (e.key === "ArrowRight") changeModal(1);
+    if (e.key === "ArrowLeft") changeModal(-1);
+    if (e.key === "Escape") closeModal();
+  }
+});
 
 
 
