@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Her Gallery</title>
+    <title>Cipa Gallery</title>
 
     <link rel="stylesheet" href="style.css" />
 
@@ -15,16 +15,38 @@
   </head>
 
   <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
+      <source src="images/music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Intro Overlay -->
+    <div id="introOverlay" class="intro-overlay">
+      <div class="intro-content">
+        <h1>Asyifa Salsabila</h1>
+        <p>💕</p>
+        <button id="enterBtn" onclick="enterSite()">✦ Tap to Enter ✦</button>
+      </div>
+    </div>
+
     <nav class="navbar">
       <div class="nav-container">
-        <h2 class="logo">Her</h2>
+        <h2 class="logo">Asyifa Salsabila</h2>
+
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
         <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Her</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#memories">Memories</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About Her</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Message</a></li>
         </ul>
       </div>
     </nav>
@@ -47,14 +69,12 @@
 
           <div class="hero-buttons">
             <a href="#gallery" class="btn-primary">See Her Photos</a>
-
-            <a href="#memories" class="btn-outline">Our Memories</a>
           </div>
         </div>
 
         <video class="hero-video" autoplay muted loop playsinline>
-<source src="images/her.mp4" type="video/mp4">
-</video>
+          <source src="images/her.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <div class="scroll-down">⌄</div>
@@ -103,58 +123,64 @@
       <h2>Her Beautiful Moments</h2>
 
       <div class="gallery-grid">
-        <img src="images/photo1.jpeg" onclick="openModal(this)" />
-        <img src="images/photo2.jpeg" onclick="openModal(this)" />
-        <img src="images/photo3.jpeg" onclick="openModal(this)" />
-        <img src="images/photo4.jpeg" onclick="openModal(this)" />
-        <img src="images/photo5.jpeg" onclick="openModal(this)" />
-        <img src="images/photo7.jpeg" onclick="openModal(this)" />
-        <img src="images/photo8.jpeg" onclick="openModal(this)" />
-        <img src="images/photo9.jpeg" onclick="openModal(this)" />
-        <img src="images/photo10.jpeg" onclick="openModal(this)" />
-        <img src="images/photo11.jpeg" onclick="openModal(this)" />
-        <img src="images/photo12.jpeg" onclick="openModal(this)" />
-        <img src="images/photo13.jpeg" onclick="openModal(this)" />
-        <img src="images/photo14.jpeg" onclick="openModal(this)" />
-        <img src="images/photo15.jpeg" onclick="openModal(this)" />
-        <img src="images/photo16.jpeg" onclick="openModal(this)" />
-        <img src="images/photo17.jpeg" onclick="openModal(this)" />
+        <img src="images/photo1.jpeg" alt="Asyifa - Photo 1" onclick="openModal(this)" />
+        <img src="images/photo2.jpeg" alt="Asyifa - Photo 2" onclick="openModal(this)" />
+        <img src="images/photo3.jpeg" alt="Asyifa - Photo 3" onclick="openModal(this)" />
+        <img src="images/photo4.jpeg" alt="Asyifa - Photo 4" onclick="openModal(this)" />
+        <img src="images/photo5.jpeg" alt="Asyifa - Photo 5" onclick="openModal(this)" />
+        <img src="images/photo7.jpeg" alt="Asyifa - Photo 7" onclick="openModal(this)" />
+        <img src="images/photo8.jpeg" alt="Asyifa - Photo 8" onclick="openModal(this)" />
+        <img src="images/photo9.jpeg" alt="Asyifa - Photo 9" onclick="openModal(this)" />
+        <img src="images/photo10.jpeg" alt="Asyifa - Photo 10" onclick="openModal(this)" />
+        <img src="images/photo11.jpeg" alt="Asyifa - Photo 11" onclick="openModal(this)" />
+        <img src="images/photo12.jpeg" alt="Asyifa - Photo 12" onclick="openModal(this)" />
+        <img src="images/photo13.jpeg" alt="Asyifa - Photo 13" onclick="openModal(this)" />
+        <img src="images/photo14.jpeg" alt="Asyifa - Photo 14" onclick="openModal(this)" />
+        <img src="images/photo15.jpeg" alt="Asyifa - Photo 15" onclick="openModal(this)" />
+        <img src="images/photo16.jpeg" alt="Asyifa - Photo 16" onclick="openModal(this)" />
+        <img src="images/photo17.jpeg" alt="Asyifa - Photo 17" onclick="openModal(this)" />
+        <img src="images/photo18.jpeg" alt="Asyifa - Photo 17" onclick="openModal(this)" />
+        <img src="images/photo19.jpeg" alt="Asyifa - Photo 17" onclick="openModal(this)" />
       </div>
     </section>
 
     <div id="imageModal" class="modal">
       <span class="close" onclick="closeModal()">×</span>
 
+      <button class="modal-prev" onclick="changeModal(-1)">&#8592;</button>
       <img class="modal-content" id="modalImg" />
+      <button class="modal-next" onclick="changeModal(1)">&#8594;</button>
     </div>
 
-    <section id="memories" class="memories scroll">
-      <h2>Our Memories</h2>
+    <section class="romantic-scene">
+      <div class="sky">
+        <div class="moon"></div>
 
-      <div class="memory-container">
-        <div class="memory-card">
-          <h3>First Message</h3>
-
-          <p>
-            The first message we sent to each other seemed ordinary, but somehow
-            it became the start of something special.
-          </p>
+        <div class="stars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </div>
 
-        <div class="memory-card">
-          <h3>Late Night Talks</h3>
+      <div class="couple">
+        <div class="boy"></div>
+        <div class="girl"></div>
+      </div>
 
-          <p>Countless nights talking for hours and forgetting about time.</p>
-        </div>
+      <div class="lyrics-display">
+        <p class="song-title">🎵 Kasih Putih — Glenn Fredly</p>
+        <div id="currentLyric" class="lyric-line"></div>
+      </div>
 
-        <div class="memory-card">
-          <h3>Virtual Moments</h3>
-
-          <p>
-            Even though we are far apart, every moment together means
-            everything.
-          </p>
-        </div>
+      <div class="hearts">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </section>
 
@@ -173,6 +199,8 @@
       <p>Made with love</p>
     </footer>
 
+    <script src="lyrics.js"></script>
     <script src="script.js"></script>
+    <script src="timing-tool.js"></script>
   </body>
 </html>
