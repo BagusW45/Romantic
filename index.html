@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cipa Gallery</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
+      <source src="images/music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Intro Overlay -->
+    <div id="introOverlay" class="intro-overlay">
+      <div class="intro-content">
+        <h1>Asyifa Salsabila</h1>
+        <p>💕</p>
+        <button id="enterBtn" onclick="enterSite()">✦ Tap to Enter ✦</button>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <h2 class="logo">Asyifa Salsabila</h2>
+
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About Her</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Message</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1>
+            Hi, This is
+            <span class="name">Asyifa</span>
+            <span class="blink">!</span>
+          </h1>
+
+          <h2 class="typing"></h2>
+
+          <p>
+            Every smile of her makes my world brighter. This page is dedicated
+            to the most beautiful person in my life.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#gallery" class="btn-primary">See Her Photos</a>
+          </div>
+        </div>
+
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="images/her.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="scroll-down">⌄</div>
+    </section>
+
+    <section id="about" class="about scroll">
+      <div class="about-card">
+        <div class="about-left">
+          <img src="images/profil.jpeg" alt="Her Photo" />
+        </div>
+
+        <div class="about-right">
+          <h2>About Her</h2>
+
+          <p>
+            She is the reason why every day feels brighter. Her smile can change
+            my entire mood and her presence makes life more meaningful.
+          </p>
+
+          <p>
+            This page is dedicated to the person who makes my world more
+            beautiful every single day.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat">
+              <h3>∞</h3>
+              <span>Memories</span>
+            </div>
+
+            <div class="stat">
+              <h3>24/7</h3>
+              <span>On My Mind</span>
+            </div>
+
+            <div class="stat">
+              <h3>100%</h3>
+              <span>Special</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery scroll">
+      <h2>Her Beautiful Moments</h2>
+
+      <div class="gallery-grid">
+        <img src="images/photo1.jpeg" alt="Asyifa - Photo 1" onclick="openModal(this)" />
+        <img src="images/photo2.jpeg" alt="Asyifa - Photo 2" onclick="openModal(this)" />
+        <img src="images/photo3.jpeg" alt="Asyifa - Photo 3" onclick="openModal(this)" />
+        <img src="images/photo4.jpeg" alt="Asyifa - Photo 4" onclick="openModal(this)" />
+        <img src="images/photo5.jpeg" alt="Asyifa - Photo 5" onclick="openModal(this)" />
+        <img src="images/photo7.jpeg" alt="Asyifa - Photo 7" onclick="openModal(this)" />
+        <img src="images/photo8.jpeg" alt="Asyifa - Photo 8" onclick="openModal(this)" />
+        <img src="images/photo9.jpeg" alt="Asyifa - Photo 9" onclick="openModal(this)" />
+        <img src="images/photo10.jpeg" alt="Asyifa - Photo 10" onclick="openModal(this)" />
+        <img src="images/photo11.jpeg" alt="Asyifa - Photo 11" onclick="openModal(this)" />
+        <img src="images/photo12.jpeg" alt="Asyifa - Photo 12" onclick="openModal(this)" />
+        <img src="images/photo13.jpeg" alt="Asyifa - Photo 13" onclick="openModal(this)" />
+        <img src="images/photo14.jpeg" alt="Asyifa - Photo 14" onclick="openModal(this)" />
+        <img src="images/photo15.jpeg" alt="Asyifa - Photo 15" onclick="openModal(this)" />
+        <img src="images/photo16.jpeg" alt="Asyifa - Photo 16" onclick="openModal(this)" />
+        <img src="images/photo17.jpeg" alt="Asyifa - Photo 17" onclick="openModal(this)" />
+        <img src="images/photo18.jpeg" alt="Asyifa - Photo 17" onclick="openModal(this)" />
+        <img src="images/photo19.jpeg" alt="Asyifa - Photo 17" onclick="openModal(this)" />
+      </div>
+    </section>
+
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">×</span>
+
+      <button class="modal-prev" onclick="changeModal(-1)">&#8592;</button>
+      <img class="modal-content" id="modalImg" />
+      <button class="modal-next" onclick="changeModal(1)">&#8594;</button>
+    </div>
+
+    <section class="romantic-scene">
+      <div class="sky">
+        <div class="moon"></div>
+
+        <div class="stars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="couple">
+        <div class="boy"></div>
+        <div class="girl"></div>
+      </div>
+
+      <div class="lyrics-display">
+        <p class="song-title">🎵 Kasih Putih — Glenn Fredly</p>
+        <div id="currentLyric" class="lyric-line"></div>
+      </div>
+
+      <div class="hearts">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+
+    <section class="love-message scroll">
+      <div class="message-card">
+        <h2>A Message For You</h2>
+
+        <p>
+          Thank you for being part of my life. Every moment with you makes my
+          world brighter.
+        </p>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <p>Made with love</p>
+    </footer>
+
+    <script src="lyrics.js"></script>
+    <script src="script.js"></script>
+    <script src="timing-tool.js"></script>
+  </body>
+</html>
